@@ -6,5 +6,6 @@ import { CustomConfigService } from '../custom-config.service';
 @Module({
   imports: [KeypairModule],
   providers: [TokenService, CustomConfigService],
+  exports: [TokenService],
 })
 export class TokenModule {}

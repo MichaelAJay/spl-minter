@@ -65,11 +65,11 @@ export class TokenService {
   }
 
   async createTokenAccount(
-    ownerPublicKey: string | PublicKey,
+    ownerPubkey: string | PublicKey,
     mintPubkey: string | PublicKey,
   ) {
-    if (typeof ownerPublicKey === 'string') {
-      ownerPublicKey = new PublicKey(ownerPublicKey);
+    if (typeof ownerPubkey === 'string') {
+      ownerPubkey = new PublicKey(ownerPubkey);
     }
 
     const ata = (
@@ -77,7 +77,7 @@ export class TokenService {
         this.connection,
         this.keypairService.getPayerKeypair(), // Fee payer
         (await this.getTokenMint(mintPubkey)).address, // mint
-        ownerPublicKey,
+        ownerPubkey,
       )
     ).toBase58();
 
